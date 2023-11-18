@@ -10,6 +10,11 @@ namespace lansman.Authorization.Users
     {
         public const string DefaultPassword = "123qwe";
 
+        public bool? IsSeller { get; set; }
+        public int? TrustScore { get; set; }
+        public bool? Gender { get; set; }
+        public DateTime? BirthDate { get; set; }
+
         public static string CreateRandomPassword()
         {
             return Guid.NewGuid().ToString("N").Truncate(16);

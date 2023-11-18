@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 using Abp.Auditing;
 using Abp.Authorization.Users;
@@ -26,6 +27,10 @@ namespace lansman.Users.Dto
         [EmailAddress]
         [StringLength(AbpUserBase.MaxEmailAddressLength)]
         public string EmailAddress { get; set; }
+        public bool? IsSeller { get; set; }
+        public int? TrustScore { get; set; }
+        public bool? Gender { get; set; }
+        public DateTime? BirthDate { get; set; }
 
         public bool IsActive { get; set; }
 
