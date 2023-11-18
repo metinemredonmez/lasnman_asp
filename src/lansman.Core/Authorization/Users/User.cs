@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Abp.Authorization.Users;
 using Abp.Extensions;
 
@@ -23,7 +24,8 @@ namespace lansman.Authorization.Users
                 Name = AdminUserName,
                 Surname = AdminUserName,
                 EmailAddress = emailAddress,
-                Roles = new List<UserRole>()
+                Roles = new List<UserRole>(),
+                CreatorUser=null,
             };
 
             user.SetNormalizedNames();
