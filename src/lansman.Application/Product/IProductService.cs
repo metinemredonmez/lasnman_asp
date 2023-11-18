@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace lansman.Product
 {
-    public interface IProductService : IApplicationService
+    public interface IProductAppService : IApplicationService
     {
     }
 }

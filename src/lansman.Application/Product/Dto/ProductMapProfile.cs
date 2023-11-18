@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace lansman.Product.Dto
 {
-    public class ProductMapProfile : Profile
+    public class CategoryMapProfile : Profile
     {
-        public ProductMapProfile()
+        public CategoryMapProfile()
         {
 
             CreateMap<CreateProductDto, Product>()

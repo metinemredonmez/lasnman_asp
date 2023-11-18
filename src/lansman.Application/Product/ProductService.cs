@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 
 namespace lansman.Product
 {
-    public class ProductService : AsyncCrudAppService<Product, CreateProductDto>, IProductService
+    public class ProductAppService : AsyncCrudAppService<Product, CreateProductDto>, IProductAppService
     {
-        public ProductService(IRepository<Product, int> repository) : base(repository)
+        public ProductAppService(IRepository<Product, int> repository) : base(repository)
         {
         }
 
