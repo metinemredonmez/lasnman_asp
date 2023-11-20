@@ -3,17 +3,17 @@ using System.Collections.Generic;
 
 namespace lansman.Product.Dto
 {
-    public class CategoryMapProfile : Profile
+    public class ProductMapProfile : Profile
     {
-        public CategoryMapProfile()
+        public ProductMapProfile()
         {
 
             CreateMap<CreateProductDto, Product>()
-            .ForMember(dest => dest.ProductImages, opt => opt.MapFrom(src => src.ProductImagesDto))
+            .ForMember(dest => dest.ProductImages, opt => opt.MapFrom(src => src.ProductImages))
             .ReverseMap();
 
             CreateMap<Product, CreateProductDto>()
-            .ForMember(dest => dest.ProductImagesDto, opt => opt.MapFrom(src => src.ProductImages))
+            .ForMember(dest => dest.ProductImages, opt => opt.MapFrom(src => src.ProductImages))
             .ReverseMap();
 
             CreateMap<CreateProductImageDto, ProductImage>()
