@@ -19,6 +19,8 @@ namespace lansman.Product
 
         public override Task<PagedResultDto<CreateProductDto>> GetAllAsync(PagedAndSortedResultRequestDto input)
         {
+            CheckGetAllPermission();
+
             var list = new List<Product>();
             var query = Repository.GetAllIncluding(x => x.ProductImages);
 
