@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Abp.Application.Services.Dto;
 using Abp.Authorization.Users;
@@ -10,6 +11,10 @@ namespace lansman.Users.Dto
     [AutoMapFrom(typeof(User))]
     public class UserDto : EntityDto<long>
     {
+        public UserDto()
+        {
+            UserAddresses = new List<CreateUserAddressDto>();
+        }
         [Required]
         [StringLength(AbpUserBase.MaxUserNameLength)]
         public string UserName { get; set; }
@@ -40,5 +45,6 @@ namespace lansman.Users.Dto
         public int? TrustScore { get; set; }
         public bool? Gender { get; set; }
         public DateTime? BirthDate { get; set; }
+        public List<CreateUserAddressDto> UserAddresses { get; set; }
     }
 }
