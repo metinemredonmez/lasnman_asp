@@ -36,5 +36,9 @@ namespace lansman.Users.Dto
         public DateTime CreationTime { get; set; }
 
         public string[] RoleNames { get; set; }
+        public bool? IsSeller { get; set; }
+        public int? TrustScore { get; set; }
+        public bool? Gender { get; set; }
+        public DateTime? BirthDate { get; set; }
     }
 }

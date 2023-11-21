@@ -13,7 +13,12 @@ namespace lansman.Users.Dto
                 .ForMember(x => x.CreationTime, opt => opt.Ignore());
 
             CreateMap<CreateUserDto, User>();
-            CreateMap<CreateUserDto, User>().ForMember(x => x.Roles, opt => opt.Ignore());
+            CreateMap<CreateUserDto, User>()
+                .ForMember(x => x.Roles, opt => opt.Ignore())
+                .ForMember(x=>x.UserAddresses,opt=>opt.MapFrom(src=>src.UserAddresses));
+
+            CreateMap<CreateUserAddressDto, UserAddress>()
+                .ReverseMap();
         }
     }
 }

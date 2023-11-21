@@ -12,6 +12,7 @@ namespace lansman.EntityFrameworkCore
         public  DbSet<Product.Product> Products { get; set; }
         public DbSet<ProductImage> ProductImages { get; set; }
         public DbSet<Category.Category> Categories { get; set; }
+        public DbSet<UserAddress> UserAddresses { get; set; }
         public lansmanDbContext(DbContextOptions<lansmanDbContext> options)
             : base(options)
         {
@@ -19,6 +20,11 @@ namespace lansman.EntityFrameworkCore
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<User>()
+                .HasMany(u => u.UserAddresses)
+                .WithOne(ua => ua.User)
+                .HasForeignKey(ua => ua.UserId);
+
             base.OnModelCreating(modelBuilder);
         }
     }
