@@ -7,7 +7,8 @@ namespace lansman.Users.Dto
     {
         public UserMapProfile()
         {
-            CreateMap<UserDto, User>();
+            CreateMap<UserDto, User>()
+                .ReverseMap();
             CreateMap<UserDto, User>()
                 .ForMember(x => x.Roles, opt => opt.Ignore())
                 .ForMember(x => x.CreationTime, opt => opt.Ignore());

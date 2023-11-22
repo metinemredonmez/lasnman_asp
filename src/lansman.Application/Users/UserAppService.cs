@@ -263,6 +263,19 @@ namespace lansman.Users
 
             return true;
         }
+
+        public async Task<UserDto> GetByIdWithAddressAsync(EntityDto<long> input)
+        {
+            CheckGetPermission();
+
+            var entity = await Repository
+                                .GetAll()
+                                .Include(r => r.UserAddresses)
+                                .AsQueryable()
+                                .FirstOrDefaultAsync(p => p.Id == input.Id);
+
+            return ObjectMapper.Map<UserDto>(entity);
+        }
     }
 }
 
