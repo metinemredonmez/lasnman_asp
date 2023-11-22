@@ -4,6 +4,7 @@ using lansman.Authorization.Roles;
 using lansman.Authorization.Users;
 using lansman.MultiTenancy;
 using lansman.Product;
+using lansman.Comment;
 
 namespace lansman.EntityFrameworkCore
 {
@@ -13,6 +14,8 @@ namespace lansman.EntityFrameworkCore
         public DbSet<ProductImage> ProductImages { get; set; }
         public DbSet<Category.Category> Categories { get; set; }
         public DbSet<UserAddress> UserAddresses { get; set; }
+        public DbSet<Comment.Comment> Comments { get; set; }
+        public DbSet<CommentImage> CommentImages { get; set; }
         public lansmanDbContext(DbContextOptions<lansmanDbContext> options)
             : base(options)
         {

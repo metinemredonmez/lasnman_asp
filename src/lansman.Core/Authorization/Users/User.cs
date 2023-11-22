@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Abp.Authorization.Users;
 using Abp.Extensions;
+using lansman.Comment;
 
 namespace lansman.Authorization.Users
 {
@@ -10,6 +11,7 @@ namespace lansman.Authorization.Users
         public User()
         {
             UserAddresses = new List<UserAddress>();
+            Comments = new List<Comment.Comment>();
         }
         public const string DefaultPassword = "123qwe";
 
@@ -18,7 +20,7 @@ namespace lansman.Authorization.Users
         public bool? Gender { get; set; }
         public DateTime? BirthDate { get; set; }
         public List<UserAddress> UserAddresses { get; set; }
-
+        public List<Comment.Comment> Comments { get; set; }
         public static string CreateRandomPassword()
         {
             return Guid.NewGuid().ToString("N").Truncate(16);

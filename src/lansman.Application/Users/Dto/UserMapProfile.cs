@@ -7,7 +7,8 @@ namespace lansman.Users.Dto
     {
         public UserMapProfile()
         {
-            CreateMap<UserDto, User>();
+            CreateMap<UserDto, User>()
+                .ReverseMap();
             CreateMap<UserDto, User>()
                 .ForMember(x => x.Roles, opt => opt.Ignore())
                 .ForMember(x => x.CreationTime, opt => opt.Ignore());
@@ -15,7 +16,8 @@ namespace lansman.Users.Dto
             CreateMap<CreateUserDto, User>();
             CreateMap<CreateUserDto, User>()
                 .ForMember(x => x.Roles, opt => opt.Ignore())
-                .ForMember(x=>x.UserAddresses,opt=>opt.MapFrom(src=>src.UserAddresses));
+                .ForMember(x=>x.UserAddresses,opt=>opt.MapFrom(src=>src.UserAddresses))
+                .ReverseMap();
 
             CreateMap<CreateUserAddressDto, UserAddress>()
                 .ReverseMap();
