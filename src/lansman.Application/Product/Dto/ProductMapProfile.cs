@@ -13,6 +13,10 @@ namespace lansman.Product.Dto
 
             CreateMap<CreateProductImageDto, ProductImage>()
                 .ReverseMap();
+
+            CreateMap<Product, GetAllProductWithImagesAndCommentDto>();
+            CreateMap<Product, GetAllProductWithImageDto>();
+            CreateMap<Product, GetAllProductWithImagesAndCommentDto>();
         }
     }
 }
