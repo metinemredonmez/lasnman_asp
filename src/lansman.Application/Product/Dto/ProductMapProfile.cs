@@ -17,6 +17,8 @@ namespace lansman.Product.Dto
             CreateMap<Product, GetAllProductWithImagesAndCommentDto>();
             CreateMap<Product, GetAllProductWithImageDto>();
             CreateMap<Product, GetAllProductWithImagesAndCommentDto>();
+
+            CreateMap<Product, GetProductDto>();
         }
     }
 }
