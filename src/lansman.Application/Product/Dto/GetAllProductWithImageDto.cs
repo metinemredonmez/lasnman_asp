@@ -1,13 +1,11 @@
 ﻿using Abp.Application.Services.Dto;
-using Abp.AutoMapper;
 using System.Collections.Generic;
 
 namespace lansman.Product.Dto
 {
-    [AutoMapTo(typeof(Product))]
-    public class CreateProductDto : EntityDto
+    public class GetAllProductWithImageDto : EntityDto
     {
-        public CreateProductDto()
+        public GetAllProductWithImageDto()
         {
             ProductImages = new List<CreateProductImageDto>();
         }

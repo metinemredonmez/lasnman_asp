@@ -1,20 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using Abp.Authorization.Users;
 using Abp.Extensions;
+using lansman.Comment;
 
 namespace lansman.Authorization.Users
 {
     public class User : AbpUser<User>
     {
+        public User()
+        {
+            UserAddresses = new List<UserAddress>();
+            Comments = new List<Comment.Comment>();
+        }
         public const string DefaultPassword = "123qwe";
 
         public bool? IsSeller { get; set; }
         public int? TrustScore { get; set; }
         public bool? Gender { get; set; }
         public DateTime? BirthDate { get; set; }
-
+        public List<UserAddress> UserAddresses { get; set; }
+        public List<Comment.Comment> Comments { get; set; }
         public static string CreateRandomPassword()
         {
             return Guid.NewGuid().ToString("N").Truncate(16);
@@ -30,7 +36,7 @@ namespace lansman.Authorization.Users
                 Surname = AdminUserName,
                 EmailAddress = emailAddress,
                 Roles = new List<UserRole>(),
-                CreatorUser=null,
+                CreatorUser = null,
             };
 
             user.SetNormalizedNames();

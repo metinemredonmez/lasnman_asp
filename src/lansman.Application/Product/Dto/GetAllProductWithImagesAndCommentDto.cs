@@ -1,15 +1,19 @@
 ﻿using Abp.Application.Services.Dto;
-using Abp.AutoMapper;
+using lansman.Comment.Dto;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace lansman.Product.Dto
 {
-    [AutoMapTo(typeof(Product))]
-    public class CreateProductDto : EntityDto
+    public class GetAllProductWithImagesAndCommentDto : EntityDto
     {
-        public CreateProductDto()
+        public GetAllProductWithImagesAndCommentDto()
         {
             ProductImages = new List<CreateProductImageDto>();
+            Comments = new List<CreateCommentDto>();
         }
         public int CategoryId { get; set; }
         public string Title { get; set; }
@@ -17,5 +21,7 @@ namespace lansman.Product.Dto
         public int StockCount { get; set; }
         public bool IsDiscount { get; set; }
         public List<CreateProductImageDto> ProductImages { get; set; }
+        public List<CreateCommentDto> Comments { get; set; }
+
     }
 }

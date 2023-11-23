@@ -37,9 +37,9 @@ namespace lansman.Authorization.Users
             AbpSession = NullAbpSession.Instance;
         }
 
-        public async Task<User> RegisterAsync(string name, string surname, string emailAddress, string userName, string plainPassword, bool isSeller, bool isEmailConfirmed )
+        public async Task<User> RegisterAsync(string name, string surname, string emailAddress, string userName, string plainPassword, bool isEmailConfirmed)
         {
-            //CheckForTenant();
+            CheckForTenant();
 
             var tenant = await GetActiveTenantAsync();
 
@@ -56,10 +56,8 @@ namespace lansman.Authorization.Users
             };
 
             user.SetNormalizedNames();
-
-            var roles = user.IsSeller == true ? _roleManager.Roles.Where(r => r.Id == 4).ToListAsync() : _roleManager.Roles.Where(r => r.IsDefault).ToListAsync();
-
-            foreach (var defaultRole in await roles)
+           
+            foreach (var defaultRole in await _roleManager.Roles.Where(r => r.IsDefault).ToListAsync())
             {
                 user.Roles.Add(new UserRole(tenant.Id, user.Id, defaultRole.Id));
             }
@@ -82,12 +80,12 @@ namespace lansman.Authorization.Users
 
         private async Task<Tenant> GetActiveTenantAsync()
         {
-            //if (!AbpSession.TenantId.HasValue)
-            //{
-            //    return null;
-            //}
+            if (!AbpSession.TenantId.HasValue)
+            {
+                return null;
+            }
 
-            return await GetActiveTenantAsync(1);
+            return await GetActiveTenantAsync(AbpSession.TenantId.Value);
         }
 
         private async Task<Tenant> GetActiveTenantAsync(int tenantId)
