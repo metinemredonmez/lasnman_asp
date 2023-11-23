@@ -8,8 +8,6 @@ namespace lansman.Category.Dto
         {
             CreateMap<CreateCategoryDto, Category>()
             .ReverseMap();
-
-            CreateMap<Category, GetCategoryDto>();
         }
     }
 }

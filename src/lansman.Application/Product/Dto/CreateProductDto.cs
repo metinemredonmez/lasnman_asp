@@ -9,13 +9,13 @@ namespace lansman.Product.Dto
     {
         public CreateProductDto()
         {
-            ProductImages = new List<CreateProductImageDto>();
+            ProductImagesDto = new List<CreateProductImageDto>();
         }
         public int CategoryId { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public int StockCount { get; set; }
         public bool IsDiscount { get; set; }
-        public List<CreateProductImageDto> ProductImages { get; set; }
+        public List<CreateProductImageDto> ProductImagesDto { get; set; }
     }
 }

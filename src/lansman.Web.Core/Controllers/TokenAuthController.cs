@@ -59,12 +59,12 @@ namespace lansman.Controllers
 
         private string GetTenancyNameOrNull()
         {
-            if (!AbpSession.TenantId.HasValue)
-            {
-                return null;
-            }
+            //if (!AbpSession.TenantId.HasValue)
+            //{
+            //    return null;
+            //}
 
-            return _tenantCache.GetOrNull(AbpSession.TenantId.Value)?.TenancyName;
+            return "default";
         }
 
         private async Task<AbpLoginResult<Tenant, User>> GetLoginResultAsync(string usernameOrEmailAddress, string password, string tenancyName)

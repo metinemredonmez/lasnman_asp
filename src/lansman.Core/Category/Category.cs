@@ -13,7 +13,7 @@ namespace lansman.Category
         }
         public string Name { get; set; }
         public string Description { get; set; }
-        public byte[] ImageUrl { get; set; }
+        public string ImageUrl { get; set; }
         public DateTime CreationTime { get; set; }
         public DateTime? LastModificationTime { get; set; }
         public bool IsDeleted { get; set; }

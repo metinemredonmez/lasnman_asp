@@ -43,6 +43,7 @@ namespace lansman.Authorization.Accounts
                 input.EmailAddress,
                 input.UserName,
                 input.Password,
+                input.IsSeller,
                 true // Assumed email address is always confirmed. Change this if you want to implement email confirmation.
             );
 

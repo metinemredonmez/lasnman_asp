@@ -10,7 +10,6 @@ namespace lansman.Product
         public Product()
         {
             ProductImages = new List<ProductImage>();
-            Comments = new List<Comment.Comment>();
         }
         public int CategoryId { get; set; }
         public string Title { get; set; }
@@ -22,6 +21,6 @@ namespace lansman.Product
         public bool IsDeleted { get; set; }
         public Category.Category Category { get; set; }
         public List<ProductImage> ProductImages { get; set; }
-        public List<Comment.Comment> Comments { get; set; }
+
     }
 }

@@ -18,7 +18,6 @@ using lansman.Authorization;
 using lansman.Authorization.Accounts;
 using lansman.Authorization.Roles;
 using lansman.Authorization.Users;
-using lansman.Product.Dto;
 using lansman.Roles.Dto;
 using lansman.Users.Dto;
 using Microsoft.AspNetCore.Identity;
@@ -53,23 +52,7 @@ namespace lansman.Users
             _abpSession = abpSession;
             _logInManager = logInManager;
         }
-        public override Task<PagedResultDto<UserDto>> GetAllAsync(PagedUserResultRequestDto input)
-        {
-            CheckGetAllPermission();
 
-            var list = new List<User>();
-
-            var query = Repository.GetAllIncluding(x => x.UserAddresses);
-
-            query = ApplySorting(query, input);
-
-            list = query.Skip(input.SkipCount)
-                .Take(input.MaxResultCount)
-                .ToList();
-
-            var result = new PagedResultDto<UserDto>(query.Count(), ObjectMapper.Map<List<UserDto>>(list));
-            return Task.FromResult(result);
-        }
         public override async Task<UserDto> CreateAsync(CreateUserDto input)
         {
             CheckCreatePermission();
@@ -128,6 +111,24 @@ namespace lansman.Users
 
         [AbpAuthorize(PermissionNames.Pages_Users_Activation)]
         public async Task DeActivate(EntityDto<long> user)
+        {
+            await Repository.UpdateAsync(user.Id, async (entity) =>
+            {
+                entity.IsActive = false;
+            });
+        }
+
+        [AbpAuthorize(PermissionNames.Pages_Product)]
+        public async Task ActivatePagesProduct(EntityDto<long> user)
+        {
+            await Repository.UpdateAsync(user.Id, async (entity) =>
+            {
+                entity.IsActive = true;
+            });
+        }
+
+        [AbpAuthorize(PermissionNames.Pages_Product)]
+        public async Task DeActivatePagesProduct(EntityDto<long> user)
         {
             await Repository.UpdateAsync(user.Id, async (entity) =>
             {
@@ -262,19 +263,6 @@ namespace lansman.Users
             }
 
             return true;
-        }
-
-        public async Task<UserDto> GetByIdWithAddressAsync(EntityDto<long> input)
-        {
-            CheckGetPermission();
-
-            var entity = await Repository
-                                .GetAll()
-                                .Include(r => r.UserAddresses)
-                                .AsQueryable()
-                                .FirstOrDefaultAsync(p => p.Id == input.Id);
-
-            return ObjectMapper.Map<UserDto>(entity);
         }
     }
 }

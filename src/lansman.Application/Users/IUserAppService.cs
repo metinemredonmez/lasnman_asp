@@ -12,7 +12,7 @@ namespace lansman.Users
         Task Activate(EntityDto<long> user);
         Task<ListResultDto<RoleDto>> GetRoles();
         Task ChangeLanguage(ChangeUserLanguageDto input);
+
         Task<bool> ChangePassword(ChangePasswordDto input);
-        Task<UserDto> GetByIdWithAddressAsync(EntityDto<long> input);
     }
 }
